@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Beamngのmod入れ方解説！ - nyakorのブログ</title>
+        <!-- Google Fontsをここにも入れるとPCと同じフォントになります -->
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+        
+        <style>
+            *, *::before, *::after { box-sizing: border-box; }
+            html { -webkit-text-size-adjust: 100%; }
+
+            body {
+                text-align: center; /* ★中身を全部真ん中に寄せる */
+                margin: 0 auto;
+                max-width: 1000px;  /* ★800pxから1000pxに広げてゆとりを持たせる */
+                padding: 20px;
+                background-color: #f9f9f9;
+                font-family: "Noto Sans JP", sans-serif; /* PCと同じフォント */
+                overflow-x: hidden;
+            }
+            
+            .article-content {
+                background-color: white; /* 記事の背景を白くする */
+                padding: 40px 60px;      /* 上下に40px、左右に60pxのゆとりを作る */
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+                text-align: center; /* ★中身を全部「真ん中揃え」にして偏りをなくす */
+            }
+
+            p {
+                font-size: 20px; /* ★16px（標準）から20pxにアップ */
+                line-height: 1.8; /* 行の間隔を少し広げて読みやすく */
+                overflow-wrap: anywhere;
+                word-break: break-word;
+                text-align: left; /* ★文章だけを左揃えにする */
+            }
+
+            img {
+                max-width: 100%; /* カード幅いっぱいまで表示（スマホでもPCでも大きめ） */
+                height: auto;
+                border-radius: 8px;
+                margin: 20px 0;
+            }
+
+            h1 { font-size: 38px; text-align: center; line-height: 1.35; } /* ★32pxから38pxにアップ */
+
+            a {
+                color: #1a5fb4;
+                word-break: break-all;
+            }
+
+            /* 関連記事のカード風リンク */
+            .link-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+                background-color: #fff;
+                border: 1px solid #eee;
+                border-radius: 12px;
+                padding: 15px;
+                margin: 40px auto;
+                max-width: 500px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+
+            .link-card:hover {
+                transform: translateY(-5px); /* マウスを乗せると少し浮く */
+                box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            }
+
+            .link-card img {
+                width: 100%;
+                height: auto; /* ★オートにして、画像が全部見えるようにしました */
+                max-height: 300px; /* PCで大きすぎないように制限 */
+                object-fit: contain; /* ★切り取らずに枠の中に収める */
+                background-color: #f0f0f0; /* 画像の周りの余白を薄いグレーに */
+                border-radius: 8px;
+                margin: 0 0 15px 0;
+            }
+
+            .link-card-title {
+                font-size: 22px;
+                font-weight: bold;
+                margin: 5px 0;
+                color: #333;
+            }
+
+            .link-card-desc {
+                font-size: 16px;
+                color: #666;
+                margin: 5px 0;
+            }
+
+            /* スマホ・狭い画面 */
+            @media screen and (max-width: 640px) {
+                body {
+                    padding: 12px 10px;
+                }
+                .article-content {
+                    padding: 22px 16px 28px;
+                    border-radius: 8px;
+                }
+                h1 {
+                    font-size: clamp(1.35rem, 5.5vw, 1.75rem);
+                }
+                p {
+                    font-size: 17px;
+                    line-height: 1.85;
+                    text-align: left;
+                }
+                img {
+                    max-width: 100%;
+                    margin: 16px 0;
+                }
+                .link-card img {
+                    max-height: 180px; /* スマホではもっと高さを抑える */
+                }
+                .link-card-title {
+                    font-size: 18px; /* 文字もスマホに合わせて少し小さく */
+                }
+                .link-card-desc {
+                    font-size: 14px;
+                }
+                a {
+                    display: inline-block;
+                    padding: 6px 0;
+                    min-height: 44px;
+                    line-height: 1.5;
+                }
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="article-content">
+            <h1>BeamNGdriveのmod入れ方解説!</h1>
+            
+            <p>どうも皆さんこんにちは BeamNGのmodの入れ方を解説します 短いかも?</p>
+            <div style="text-align: center;">
+                <img src="samune.png">
+                <p style="text-align: center;"></p>
+            </div>
+            <p>BeamNGdriveのmodの入れ方↓</p>
+            <p>まずはmodをインストールします。webからならまずbeamng modとしらべてこのサイトを開きます。</p>
+            <img src="beamng web 2.png">
+            <p>そうしたら入って右上に検索窓があるので検索したい人は検索してください。</p>
+            <p>検索したら画像の赤いところを押します。</p>
+            <img src="beamng web5.png">
+            <p>そうしたら既読するというところがあるので押します。そうすればmodをダウンロードできます。</p>
+            <img src="beamng web 4.png">
+            <br>
+            <p>次はダウンロードしたmodをBeamNGに入れる方法を紹介します。</p>
+            <p>メニュー画面のリポジトリを押します。</p>
+            <img src="mod 1.png">
+            <p>そしたら画面左上>のmodマネージャーを押してください。</p>
+            <img src="mod 2.png">
+            <p>そうしたらmodフォルダを開くを押してフォルダを開きます。</p>
+            <img src="mod 3.png">
+            <p>ダウンロードフォルダとBeamnNGのmodフォルダを画面においてファイルを移動します。</p>
+            <img src="mod 4.png">
+            <p>これでwebからのmodの導入は完了です。</p>
+            <br>
+            <p>最後にゲーム内からのmodの導入方法を紹介します。</p>
+            <p>まずはメニューのリポジトリを押します。</p>
+            <img src="mod 1.png">
+            <p>リポジトリ内のゲームのプラスを押したらmod導入完了です。ゲーム内からのほうが簡単ですね。アイコン押すとmodの内容がわかります。画面右にはカテゴリーの欄があったり検索窓があったりするのでお目当てのmodをサクッと見つけれそうですね!でもゲーム内にないmodもあるのでそういう時はwebで探すと見つかりやすいと思います。</p>
+            <img src="beammg nai mod.png">
+            <br>
+            <br>
+            <p>どうだったでしょうか。今回の記事はBeamNGのmodの入れ方解説でした。わかりやすかったでしょうか？BeamnGのレビューのリンクとsteamのリンク張っときます!最後まで見てくれてありがとうございました。よい一日を！</p>
+
+            <!-- 関連記事カード（画像付きリンク） -->
+            <a href="../二記事目/beamng.html" class="link-card">
+                <img src="../三記事目/real.png">
+                <div class="link-card-title">【レビュー】BeamNG.driveを遊びつくす！</div>
+            </a>
+
+            <!-- Steamへのリンク（テキスト） -->
+            <p style="font-size: 14px; text-align: center;">
+                <a href="https://store.steampowered.com/app/284160/BeamNGdrive/?l=japanese" target="_blank">
+                    → BeamNG.drive (Steamストアページ)
+                </a>
+            </p>
+
+
+            
+
+            <br>
+            <a href="../index.html">ホームに戻る</a>
+        </div>
+
+    </body>
+</html>

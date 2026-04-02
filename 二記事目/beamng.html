@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BeamNGレビュー!物理演算がガチすぎる - nyakorのブログ</title>
+        <!-- Google Fontsをここにも入れるとPCと同じフォントになります -->
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+        
+        <style>
+            *, *::before, *::after { box-sizing: border-box; }
+            html { -webkit-text-size-adjust: 100%; }
+
+            body {
+                text-align: center; /* ★中身を全部真ん中に寄せる */
+                margin: 0 auto;
+                max-width: 1000px;  /* ★800pxから1000pxに広げてゆとりを持たせる */
+                padding: 20px;
+                background-color: #f9f9f9;
+                font-family: "Noto Sans JP", sans-serif; /* PCと同じフォント */
+                overflow-x: hidden;
+            }
+            
+            .article-content {
+                background-color: white; /* 記事の背景を白くする */
+                padding: 40px 60px;      /* 上下に40px、左右に60pxのゆとりを作る */
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+                text-align: left; /* ★読みやすさのため「左揃え」に戻しました */
+            }
+
+            p {
+                font-size: 20px; /* ★16px（標準）から20pxにアップ */
+                line-height: 1.8; /* 行の間隔を少し広げて読みやすく */
+                overflow-wrap: anywhere;
+                word-break: break-word;
+            }
+
+            img, video {
+                max-width: 100%; /* カード幅いっぱいまで表示（スマホでもPCでも大きめ） */
+                height: auto;
+                border-radius: 8px;
+                margin: 15px 0; /* ★40pxから15pxに縮めて、要素同士を近づけました */
+            }
+
+            h1 { font-size: 38px; text-align: center; line-height: 1.35; } /* ★32pxから38pxにアップ */
+
+            a {
+                color: #1a5fb4;
+                word-break: break-all;
+            }
+
+
+            .link-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+                background-color: #fff;
+                border: 1px solid #eee;
+                border-radius: 12px;
+                padding: 15px;
+                margin: 40px auto;
+                max-width: 500px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+
+            .link-card:hover {
+                transform: translateY(-5px); /* マウスを乗せると少し浮く */
+                box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            }
+
+            .link-card img {
+                width: 100%;
+                height: auto; /* ★オートにして、画像が全部見えるようにしました */
+                max-height: 300px; /* PCで大きすぎないように制限 */
+                object-fit: contain; /* ★切り取らずに枠の中に収める */
+                background-color: #f0f0f0; /* 画像の周りの余白を薄いグレーに */
+                border-radius: 8px;
+                margin: 0 0 15px 0;
+            }
+
+            .link-card-title {
+                font-size: 22px;
+                font-weight: bold;
+                margin: 5px 0;
+                color: #333;
+            }
+
+            .link-card-desc {
+                font-size: 16px;
+                color: #666;
+                margin: 5px 0;
+            }
+
+            /* スマホ・狭い画面 */
+            @media screen and (max-width: 640px) {
+                body {
+                    padding: 12px 10px;
+                }
+                .article-content {
+                    padding: 22px 16px 28px;
+                    border-radius: 8px;
+                }
+                h1 {
+                    font-size: clamp(1.35rem, 5.5vw, 1.75rem);
+                }
+                p {
+                    font-size: 18px;
+                    line-height: 1.9;
+                }
+                img, video {
+                    max-width: 100%;
+                    margin: 10px 0;
+                }
+                .link-card img {
+                    max-height: 180px; /* スマホではもっと高さを抑える */
+                }
+                .link-card-title {
+                    font-size: 18px; /* 文字もスマホに合わせて少し小さく */
+                }
+                .link-card-desc {
+                    font-size: 14px;
+                }
+                a {
+                    display: inline-block;
+                    padding: 6px 0;
+                    min-height: 44px;
+                    line-height: 1.5;
+                }
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="article-content">
+            <h1>物理演算+車ゲーと言ったらBeamNG driveレビューします!
+            </h1>
+            
+            <p>どうも皆さんこんにちはnyakorです。 今回レビューするゲームは物理演算がガチの...
+                <br>
+                サンドボックス×物理演算+車ゲーのBeamNG driveをレビューします！
+            
+            <!-- 写真を入れたいときはこれ -->
+            <p style="text-align: center;">
+                <img src="../三記事目/real.png">
+                <br>
+            </p>
+            <br>
+            <p>二回目ですね!nyakorと申します。このゲームは車好きにはたまらんゲームだと思います。
+                <br>BeamNGのおすすめ度は..?
+                <br>
+                ★★★★★★★★★☆ （9 / 10）です!
+                <br>
+                値段のわりに遊べることが多すぎてやばいです。 クオリティが半端ないのが凄かったです。
+            </p>
+            <p>まず凄いのは最初から入っている車の数です。</p>
+            <img src="shurui.png">
+            <img src="shurui 2.png">
+            <p>ほんとに数がすごいですよね!全部で35車種あって、スキンを変えたりエンジン変えたりカスタムすることで1000種類以上のバリエーションの車があるそうです。</p>
+
+            <p>BeamNGで一番すごいことは物理演算です。 物理演算がガチすぎて実際の車みたいで毎秒2000回物理の計算が行われるそうです。
+                <br>
+                物理が凄いので事故も現実の衝突実験みたいです。
+            </p>
+            <video src="s shoutotu50km.mp4" autoplay muted loop playsinline controls></video>
+            
+            <video src="s shoutotu100km.mp4" autoplay muted loop playsinline controls></video>
+            
+            <p>これは壁に突っ込んだだけですが車と車で正面衝突させると現実な感じでリアルになります。
+                <br>実は現実の自動車メーカーにもBeamNGの挙動がリアル過ぎて使われているらしいです。</p>
+
+            <video src="shoumennshoutotu 2.mp4" autoplay muted loop playsinline controls></video>
+
+            <p>相当リアルですよね。車の衝突の動きがリアル過ぎていつもめっちゃビクってします( ´∀｀ )
+                <br>
+                一秒間に2000回計算してると言いましたが一つの車に400から1000のノードという
+                <br>
+                関節のようなものがあってノードとノードをつなぐビームという線は4000本から10000本も
+                <br>
+                あるみたいでこれを毎秒2000回も計算してたらそりゃリアルになるなと思いました。
+                <br>
+                <br>つぎは現実だと52%とも占めてしまっているトラックと乗用車の衝突です。</p>
+
+            <video src="shoumennshoutotu 3.mp4" autoplay muted loop playsinline controls></video>
+
+            <p>このゲーム一人称視点もリアルで没入感はあります。でも問題もあって視点移動が運転しながらできないのと速度感があんまりないです。↓見てみてください</p>
+
+            <video src="driver 1.mp4" autoplay muted loop playsinline controls></video>
+            
+            <video src="driver 2.mp4" autoplay muted loop playsinline controls></video>
+
+            <p>またクエストっていうか挑戦みたいなのがあってそれも種類が多いのに作りこみもしっかりしてるのでやってみてくださいね。有志のmodで首都高マップあるので遊んでみてください！リンク一番下に張っときます
+            </p>
+            <img src="sinario.png">
+            <p>マップの数も10個くらいあってマップはほんとに作りこみがすげえなって感じです。オープンワールドですね。</p>
+            <img src="map.png">
+            <p>どんな感じか見せます。人力で作れることに驚きです。</p>
+            <img src="itaria.png">
+            <p>イタリアの古い街並みがいい味出してますね。</p>
+            <img src="nisikaigan.png">
+            <p>アメリカ西海岸の架空の場所です。こういうところに住んでみたいですね。</p>
+            <img src="race.png">
+            <p>これはレース場です。ここでAIとレースできるのですがAIがちゃんと強いです。</p>
+
+            <p>正直マップの作りこみはすごいんですがまだ最適化が進んでなくて重い部類のゲームです。あとちょっとまだ最新のゲームには画質で負けてる気がします。</p>
+
+            <p>またBeamNGのエンジンの音が最高です。聴いてみてください。</p>
+
+            <video src="sound.mp4" autoplay muted loop playsinline controls></video>
+            <video src="sound 2.mp4" autoplay muted loop playsinline controls></video>
+
+            <p>エンジンの音ほんとにリアルな感じですよね。人生で一回は乗ってみたい。</p>
+            
+            <p>ということでどうだったでしょうか？最後にいいところとマイナスなところを正直に書いていこうと思います。</p>
+            <h1>いいところ</h1>
+            <p>本当になんでもできるところです。サンドボックスなのでカーチェイスしても破壊しつくしたり非公式のマルチプレイで遊んだり有志のmodで遊んだり...やることが無限なところがいいですね。</p>
+            <p>物理演算のリアルさが異常なところです。これまでリアルな車ゲー見たことないです。</p>
+            <p>有志のmodの数が凄まじいことです。5万個は余裕であるし実在する車もダウンロードできます。</p>
+            <p>マップの作りこみも異常なほどよくできていて広いです。</p>
+            <p>音もこだわりが異常です。例えば事故ったときになるガッシャーンという音はリアルタイムで金属の音とかプラスチックの音と合成されてできる音だそうです。</p>
+            <p>重力とか時間とか風量とか雲の多さだったりも細かく調節できることろです</p>
+
+            <h1>マイナスなところ</h1>
+            <p>これが一番でかくてpcのスペックが頭おかしいです。最低でもAMD Ryzen 5 1600 / Intel Core i5-8400以上が必要だそうです。よくわからない人もいるかと思いますが、PC高騰時代の今だと10万のPCじゃ厳しいです。</p>
+            <p>ストーリーやゴールがなくてサンドボックスでいつでもなんでもできるので飽きる可能性があります。有志のmodもいいんですがセキュリティのリスクもあるのであんま入れれなくて飽きるかもしれません。</p>
+            <p>設定画面とかが初心者には複雑かもしれないところです。あとUI全体的に動作がもっさりしてるのでストレスたまるかもしれないです。</p>
+            <p>物理演算に全振りしてるのでグラフィックは最新のものには劣るかもしれません。</p>
+            <p>リアルなのはいいんですがリアルすぎてレースとがやる人にはやりずらいかもしれないです。</p>
+            
+            <p>こんな感じです。僕的には★9/10にするくらい作りこみが凄くて車好きに刺さりそうなゲームだなと思いました。</p>
+            <p>2026年 4/1時点だと2800円でこの作りこみならこのくらいかなって感じの値段です。
+                <br>最低価格は-33%の1876円です。でもめったにこの値段は来ないみたいでいつもは20%オフくらいです。</p>
+            <p>今回はBeamNGをレビューしました！どうでしたか？物理演算要素が凄いのでやってみてください。ハンドルコントローラーなど使うとよりリアルになりますよ。ではよい一日を！</p>
+
+            <p>
+                <a href="https://store.steampowered.com/app/284160/BeamNGdrive/?l=japanese" target="_blank">
+                BeamNGdrive (Steamストアページ)
+                </a>
+            </p>
+
+            <p>
+                <a href="https://www.beamng.com/threads/tokyos-shuto-expressway-metropolitan-expressway.61259/" target="_blank">
+                    Tokyo's Shuto Expressway (BeamNGdriveの非公式マップ 公式のサイトなので安全な可能性が高い)
+                </a>
+            </p>
+            <!-- 関連記事カード（画像付きリンク） -->
+            <a href="../三記事目/beamng mod.html" class="link-card">
+    <!-- 他の記事の画像を表示 -->
+                <img src="../三記事目/samune.png">
+    
+    <!-- 記事のタイトル -->
+                <div class="link-card-title">【mod入れ方解説】BeamNG driveのmod入れ方解説 中学生でもできる！ 画像付き</div>
+            </a>
+
+            <br>
+            <a href="../index.html">ホームに戻る</a>
+        </div>
+    </body>
+</html>
