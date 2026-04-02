@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>自己紹介 - nyakorのブログ</title>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+        
+        <style>
+            *, *::before, *::after { box-sizing: border-box; }
+
+            body {
+                text-align: center;
+                margin: 0 auto;
+                max-width: 1000px;
+                padding: 20px;
+                background-color: #f9f9f9;
+                font-family: "Noto Sans JP", sans-serif;
+                overflow-x: hidden;
+            }
+            
+            .article-content {
+                background-color: white;
+                padding: 40px 60px;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+                text-align: left; /* 文章は左揃え */
+            }
+
+            h1 { font-size: 38px; text-align: center; line-height: 1.35; margin-bottom: 40px; }
+            h2 { font-size: 28px; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 40px; }
+
+            p {
+                font-size: 18px;
+                line-height: 1.8;
+                margin-bottom: 20px;
+            }
+
+            .admin-icon {
+                display: block;
+                margin: 0 auto 20px;
+                border-radius: 50%;
+                width: 150px;
+                height: 150px;
+                object-fit: cover;
+            }
+
+            .amazon-clause {
+                background-color: #f1f1f1;
+                padding: 20px;
+                border-radius: 8px;
+                font-size: 15px;
+                color: #555;
+                margin-top: 60px;
+            }
+
+            a {
+                color: #1a5fb4;
+                text-decoration: none;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+            .home-link {
+                display: block;
+                text-align: center;
+                margin-top: 40px;
+                font-weight: bold;
+            }
+
+            /* スマホ用 */
+            @media screen and (max-width: 640px) {
+                .article-content {
+                    padding: 25px 20px;
+                }
+                h1 { font-size: 28px; }
+                h2 { font-size: 22px; }
+                p { font-size: 16px; }
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="article-content">
+            <h1>自己紹介</h1>
+
+            <img src="../icon.png" alt="nyakor" class="admin-icon">
+            <p style="text-align: center; font-weight: bold; font-size: 22px;">管理人：nyakor</p>
+
+            <h2>プロフィール</h2>
+            <p>
+                こんにちは！nyakorです。<br>
+                このブログでは、PC関連の検証だったり周辺機器の話やゲームのレビューをメインに発信しています。
+            </p>
+            <p>
+                「中学生でもわかる！」をモットーに、難しいことをできるだけ簡単に解説することを目指しています。<br>
+                特にMODの導入解説など、自分が苦労した経験を活かして、皆さんがスムーズに遊べるような手助けができれば嬉しいです。
+            </p>
+
+            <h2>活動内容</h2>
+            <p>
+                ・ゲームレビュー（物理演算系、サンドボックス系が好きです）<br>
+                ・PC関連の検証(PCの性能とか)
+                ・PC周辺機器の紹介
+            </p>
+            <p>増えるかもしれません</p>
+
+            <!-- Amazonアソシエイトの規約文 -->
+            <div class="amazon-clause">
+                <p style="margin-bottom: 0;">
+                    <strong>【Amazonアソシエイトについて】</strong><br>
+                    当サイト（nyakorのブログ）は、Amazon.co.jpを宣伝しリンクすることによってサイトが紹介料を獲得できる手段を提供することを目的に設定されたアフィリエイトプログラムである、Amazonアソシエイト・プログラムの参加者です。
+                </p>
+            </div>
+
+            <a href="../index.html" class="home-link">ホームに戻る</a>
+        </div>
+
+    </body>
+</html>
