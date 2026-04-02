@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>nyakorブログのホーム</title>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            body{
+                text-align: center;
+                margin: 0 auto;
+                background-color: #f9f9f9;
+                font-family: "Noto Sans JP",sans-serif;
+            }
+
+            h1{
+                font-size:38px;
+            }
+            p{
+                font-size:18px;
+            }
+
+            .post-item{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 20px auto;
+                max-width: 800px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+                padding-bottom:15px;
+
+                background-color: white;
+                padding: 20px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+                text-decoration: none;
+                color: inherit;
+            }
+
+            .header-box{
+                background-color: white;
+                margin: 20px auto;
+                padding: 30px;
+                max-width: 900px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            }
+
+            .post-item img{
+                margin: 15px 0;
+                border-radius: 8px;
+                object-fit: cover;
+                max-width: 100%;
+                height: auto;
+            }
+
+            .explanation{
+                font-size: 18px;
+                margin-top: 10px;
+            }
+
+            .post-title{
+                font-size: 30px;
+                font-weight: bold;
+                margin: 0;
+            }
+
+            @media screen and (max-width: 600px){
+                .header-box, .post-item{
+                    padding: 10px 20px;
+                    margin: 10px;
+                }
+                .post-item img{
+                    width: 100% !important;
+                }
+                .admin-icon{
+                    width: 150px;
+                    padding: 5px;
+                }
+                span[style*="font-size: 18px;"]{
+                    font-size:14px !important;
+                }
+                h1{
+                    font-size: 26px;
+                }
+                p {
+                    font-size:15px;
+                }
+                .post-title {
+                    font-size: 22px;
+                }
+                .explanation {
+                    font-size: 15px;
+                }
+                body{
+                    zoom: 0.8;
+                }
+            }
+            
+
+        </style>
+    </head>
+    <body>
+        <div class="header-box">
+            <img src="icon.png" alt="icon" width="200" class="admin-icon">
+            <span style="font-size: 18px;">管理人nyakor</span>
+                <h1>nyakorのブログへようこそ!
+
+                </h1>
+                 <p>このブログでは、PC関連のことや周辺機器のことについて発信しています。
+                    <br>
+                     いろいろな検証やゲームレビューなども行っています。
+                     <br>
+                     下に行くと記事がありますので、是非ともご覧ください。
+                    </p>
+        </div>
+
+        <hr>
+
+        <br>
+        <br>
+        <br>
+
+        <A href="初投稿/terratech.html" class="post-item">
+            <img src="初投稿/terratech steam.png" style="width: 100%; height: auto;">
+            <h3 class="post-title">初ブログ投稿簡単な自己紹介とterratechのレビューとかいろいろ書きます。</h3>
+            <p class="explanation">初めてのブログ投稿です！ 自分のPCで初めて遊んだゲームがterratechでサンドボックスが面白いのでレビューさせていただきます</p>
+        </A>
+    </body>
+</html>8
