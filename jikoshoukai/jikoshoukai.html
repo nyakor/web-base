@@ -8,6 +8,7 @@
         
         <style>
             *, *::before, *::after { box-sizing: border-box; }
+            * { text-wrap: balance; }
 
             body {
                 text-align: center;
@@ -34,6 +35,7 @@
                 font-size: 18px;
                 line-height: 1.8;
                 margin-bottom: 20px;
+                text-wrap: pretty;
             }
 
             .admin-icon {
@@ -70,6 +72,37 @@
                 font-weight: bold;
             }
 
+            .form-box {
+                text-align: center;
+                margin-top: 20px;
+                background-color: white;
+                border: 1px solid #eee;
+                border-radius: 8px;
+                padding: 20px;
+            }
+
+            .google-form-button {
+                display: inline-block;
+                font-size: 18px;
+                font-weight: bold;
+                color: #fff;
+                background-color: #1a5fb4;
+                padding: 12px 20px;
+                border-radius: 10px;
+                text-decoration: none;
+                box-shadow: 0 2px 10px rgba(26, 95, 180, 0.15);
+            }
+
+            .google-form-button:hover {
+                background-color: #144a86;
+            }
+
+            .form-sub {
+                margin-top: 10px;
+                font-size: 14px;
+                color: #666;
+            }
+
             
             @media screen and (max-width: 640px) {
                 .article-content {
@@ -84,7 +117,7 @@
     <body>
 
         <div class="article-content">
-            <h1>自己紹介</h1>
+            <h1 id="top">自己紹介</h1>
 
             <img src="../icon.png" alt="nyakor" class="admin-icon">
             <p style="text-align: center; font-weight: bold; font-size: 22px;">管理人：nyakor</p>
@@ -116,14 +149,17 @@
             </div>
 
             <h2 id="contact">お問い合わせ</h2>
-            <details style="margin-top: 20px; cursor: pointer;">
-                <summary style="font-size: 18px; font-weight: bold; color: #1a5fb4; padding: 10px; background-color: #f1f1f1; border-radius: 8px; list-style: none;">
-                    ▼ クリックしてお問い合わせフォームを開く
-                </summary>
-                <div style="text-align: center; margin-top: 20px; background-color: white; border: 1px solid #eee; border-radius: 8px; padding: 10px;">
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeOAt--6Lo73_80qPsY15bziOy9FsWn9nPHDgeLSK3XxA3MRg/viewform?embedded=true" width="100%" height="1000" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
-                </div>
-            </details>
+            <div class="form-box">
+                <a
+                    class="google-form-button"
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSeOAt--6Lo73_80qPsY15bziOy9FsWn9nPHDgeLSK3XxA3MRg/viewform"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    ▼ Googleフォームでお問い合わせ
+                </a>
+                <div class="form-sub">クリックするとGoogleフォームのサイトへ移動します（新しいタブ）</div>
+            </div>
 
             <a href="../index.html" class="home-link">ホームに戻る</a>
         </div>

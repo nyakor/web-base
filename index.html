@@ -6,6 +6,7 @@
         <title>nyakorブログのホーム</title>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
         <style>
+            * { text-wrap: balance; }
             body{
                 text-align: center;
                 margin: 0 auto;
@@ -18,13 +19,15 @@
             }
             p{
                 font-size:18px;
+                text-wrap: pretty;
             }
 
             .post-item{
                 display: flex;
                 flex-direction: column;
-                align-items: center;
+                align-items: stretch;
                 margin: 20px auto;
+                width: 100%;
                 max-width: 800px;
                 text-align: left;
                 border-bottom: 1px solid #ddd;
@@ -57,12 +60,17 @@
             .explanation{
                 font-size: 18px;
                 margin-top: 10px;
+                width: 100%;
             }
 
             .post-title{
                 font-size: 30px;
                 font-weight: bold;
                 margin: 0;
+                width: 100%;
+                overflow-wrap: anywhere;
+                word-break: break-word;
+                text-wrap: pretty;
             }
 
             @media screen and (max-width: 600px){
@@ -113,7 +121,7 @@
                      <br>
                      下に行くと記事がありますので、是非ともご覧ください。
                     </p>
-                <a href="jikoshoukai/jikoshoukai.html" style="font-size: 16px; color: #1a5fb4; text-decoration: none; display: block; margin-top: 20px; text-align: center;">→ 自己紹介ページはこちら　お問い合わせもこちらから</a>
+                <a href="jikoshoukai/jikoshoukai.html#top" style="font-size: 16px; color: #1a5fb4; text-decoration: none; display: block; margin-top: 20px; text-align: center;">→ 自己紹介ページはこちら　お問い合わせもこちらから</a>
         </div>
 
         <hr>
@@ -124,7 +132,7 @@
 
         <A href="1-blog/terratech.html" class="post-item">
             <img src="1-blog/terratech steam.png" style="width: 100%; height: auto;">
-            <h3 class="post-title">初ブログ投稿!サンドボックスとサバイバルの神ゲーTerraTechをレビュー</h3>
+            <h3 class="post-title">初ブログ投稿!サンドボックス&サバイバルのなんでもできる神ゲーTerraTechをレビュー</h3>
             <p class="explanation">初めてのブログ投稿です！ サンドボックスでサバイバル要素も冒険要素も含まれてるいいゲームなのでレビューします！ちょっとやばいバグも..?
                 <br>
                 © Payload Studios (TerraTech)
