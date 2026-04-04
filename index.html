@@ -6,6 +6,7 @@
         <title>nyakorブログのホーム</title>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
         <style>
+            *, *::before, *::after { box-sizing: border-box; }
             * { text-wrap: balance; }
             body{
                 text-align: center;
@@ -20,6 +21,13 @@
             p{
                 font-size:18px;
                 text-wrap: pretty;
+            }
+
+            hr{
+                width: 100%;
+                border: 0;
+                border-top: 2px solid #d0d0d0;
+                margin: 20px 0;
             }
 
             .post-item{
@@ -73,10 +81,11 @@
                 text-wrap: pretty;
             }
 
+
             @media screen and (max-width: 600px){
                 .header-box, .post-item{
                     padding: 10px 20px;
-                    margin: 10px;
+                    margin: 10px auto;
                 }
                 .post-item img{
                     width: 100% !important;
