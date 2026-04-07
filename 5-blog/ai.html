@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RTX2070SUPERで挑むAI画像生成の話 - nyakorのブログ</title>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+        
+        <style>
+            *, *::before, *::after { box-sizing: border-box; }
+            * { text-wrap: balance; }
+            html { -webkit-text-size-adjust: 100%; }
+
+            body {
+                text-align: center;
+                margin: 0 auto;
+                max-width: 1000px;
+                padding: 20px;
+                background-color: #f9f9f9;
+                font-family: "Noto Sans JP", sans-serif;
+                overflow-x: hidden;
+            }
+            
+            .article-content {
+                background-color: white;
+                padding: 40px 60px;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+                text-align: center;
+            }
+
+            p {
+                font-size: 20px;
+                line-height: 1.8;
+                overflow-wrap: anywhere;
+                word-break: break-word;
+                text-align: left;
+                text-wrap: pretty;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+                margin: 20px 0;
+            }
+
+            h1 { font-size: 38px; text-align: center; line-height: 1.35; } 
+
+            a {
+                color: #1a5fb4;
+                word-break: break-all;
+            }
+
+            .link-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+                background-color: #fff;
+                border: 1px solid #eee;
+                border-radius: 12px;
+                padding: 15px;
+                margin: 40px auto;
+                max-width: 500px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+
+            .link-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            }
+
+            .link-card img {
+                width: 100%;
+                height: auto;
+                max-height: 300px;
+                object-fit: contain;
+                background-color: #f0f0f0;
+                border-radius: 8px;
+                margin: 0 0 15px 0;
+            }
+
+            .link-card-title {
+                font-size: 22px;
+                font-weight: bold;
+                margin: 5px 0;
+                color: #333;
+            }
+
+            .link-card-desc {
+                font-size: 16px;
+                color: #666;
+                margin: 5px 0;
+            }
+
+            /* スマホ・狭い画面 */
+            @media screen and (max-width: 640px) {
+                body {
+                    padding: 12px 10px;
+                }
+                .article-content {
+                    padding: 22px 16px 28px;
+                    border-radius: 8px;
+                }
+                h1 {
+                    font-size: clamp(1.35rem, 5.5vw, 1.75rem);
+                }
+                p {
+                    font-size: 17px;
+                    line-height: 1.85;
+                    text-align: left;
+                }
+                img {
+                    max-width: 100%;
+                    margin: 16px 0;
+                }
+                .link-card img {
+                    max-height: 180px;
+                }
+                .link-card-title {
+                    font-size: 18px;
+                }
+                .link-card-desc {
+                    font-size: 14px;
+                }
+                a {
+                    display: inline-block;
+                    padding: 6px 0;
+                    min-height: 44px;
+                    line-height: 1.5;
+                }
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="article-content">
+            <h1>【限界突破】RTX 2070 Superで挑むAI画像生成の話 VRAM8GBが重すぎた</h1>
+            <p>どうも皆さんこんにちは！ ブログを書いたりゲームをしたりに明け暮れているnyakorです。ブログを書くのもそのレビュー対象のゲームを買うのにも<Strong>避けれない問題があります。それは資金不足です。</Strong>ゲームを一つ買うのにも今の貯金だと限界があります。なら自分のできることで稼ごうと思いました。なので<strong>手元のPCでAI画像生成（Stable Diffusion / Forge）</strong>を始めました。</p>
+            <p>しかし、僕のPCをグラフィックボードの<strong>NVIDIA GeForce RTX 2070 Super （VRAM 8GB）</strong>は、最新のグラボに比べればもはや「一世代前の戦士」です。この限られたリソースで、いかにして<strong>売れるクオリティ</strong>を生成して、月10円を生み出すか。ぜひ最後まで見てってください。</p>
+            <br>
+            <h2>第1の罠：「8K」という呪文とVRAMの爆死</h2>
+            <p>AI画像生成を始めたばかりの人は<strong>多分必ずかかる罠があります。</strong>それは<strong>8Kという名の罠</strong>です。最高の画質を求めて僕は8K high qualityと打って生成ボタンを<strong>押した瞬間PCに異変が起きました。</strong>なんと<strong>通常10秒ほどで終わる画像生成がなんと8K high qualityと打ったせいで10分に伸びました。</strong>しかもPCの音がまるでジェット機でした。タスクマネージャーを開くと驚きの光景が↓</p>
+            <img src="high.png">
+            <p>教訓1: VRAM8GB以下勢にとって<strong>プロンプトでの8K指定はただの自爆コード</strong>である。<Strong>(プロンプトを読むのはAIなので8K指定で絶対重くなるわけではないです。)</Strong></p>
+            <h2>第2の関門： 妥協できない品質</h2>
+            <p>次に僕を悩ませたのは<strong>AIによる細部の崩壊</strong>です。例えばぱっと見ると綺麗な桜と川の画像です。</p>
+            <img src="houkai.png">
+            <p>奥のところだったりが<strong>グチャってしてたり色が混ざってたり</strong>しますよね。ぱっと見綺麗だし売っちゃえと思うのは簡単なんですが質が悪いので売りませんでした。不完全な画像を出すのは自分のブランドを傷つけることになるからです。</p>
+            <h2>成功の兆し: たくさん作ることによりマシな写真が出来た</h2>
+            <p>50枚の中からやっと納得のいく画像ができました。 東方projectの博麗霊夢さんです。</p>
+            <img src="reimu.png">
+            <p>いつもどこを見て選んでるかというと<strong>絵の崩壊がないことと色が不自然じゃないこと、あとはより詳しく見てぼやけてるところがないか</strong>とかです。これをクリアできる絵って100枚に数枚なので見逃さないように見ていきます。</p>
+            <h2>VRAM8GBで生き残るための方法</h2>
+            <p>ここで、僕と同じように<strong>低〜中スペックのグラボでAIを楽しみたい、</strong>という人のために、僕が編み出した軽くて綺麗を作る方法を紹介します。</p>
+            <p>1.512×512で当たりが出るまで生成する
+                <br>
+                <strong>最初から高解像度だと効率が下がるし電気代も上がるので少ない解像度でやりましょう。</strong>
+            </p>
+            <p>アップスケールはあと出しにする
+                <br>
+                <strong>生成と同時に高解像度化するHires. fixは重すぎます。生成後にExtrasタブで拡大する方が圧倒的にVRAMに優しくて軽いです。</strong>
+            </p>
+            <h2>最初は月10円でも収入がほしい！</h2>
+            <p>僕の<Strong>最初の目標は、月に10円でも売れること</Strong>です。「たった10円？」と思うかもしれません。でも、最初は10円でも価値があると思います。</p>
+            <p>ということでどうだったでしょうか？博麗霊夢さんの絵綺麗だったですよね。皆さんが満足できる画像を作ろうと思っています。下にBOOTHのリンクを張っておくのでぜひ見てみてください。では見てくれてありがとうございました！よい一日にを！</p>
+
+            <br>
+            <a href="../index.html">ホームに戻る</a>
+        </div>
+
+    </body>
+</html>
