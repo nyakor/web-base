@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VRAM8GBでStable Diffusion/Forge高速化！＆Stability Matrixを使った導入方法！(起動構成) - nyakorのブログ</title>
+
+        <meta name="description" content="VRAM8GBでStable Diffusion/Forge高速化！＆Stability Matrixを使った導入方法！(起動構成)">
+        <meta property="og:type" content="article">
+        <meta property="og:site_name" content="nyakorのブログ">
+        <meta property="og:title" content="RTX 2070 SuperでAI画像生成｜VRAM 8GBでのおすすめ設定 - nyakorのブログ">
+        <meta property="og:description" content="VRAM8GBでStable Diffusion/Forge高速化！＆Stability Matrixを使った導入方法！(起動構成)">
+        <meta property="og:url" content="https://nyakor.github.io/web-base/6-blog/ai-setings.html">
+        <meta property="og:image" content="https://nyakor.github.io/web-base/6-blog/reimu-copy.png">
+        <meta property="og:locale" content="ja_JP">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="RTX 2070 SuperでAI画像生成｜VRAM 8GBでのおすすめの設定 - nyakorのブログ">
+        <meta name="twitter:description" content="VRAM8GBでStable Diffusion/Forge高速化！＆Stability Matrixを使った導入方法！(起動構成)">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+        
+        <style>
+            *, *::before, *::after { box-sizing: border-box; }
+            * { text-wrap: balance; }
+            html { -webkit-text-size-adjust: 100%; }
+
+            body {
+                text-align: center;
+                margin: 0 auto;
+                max-width: 1000px;
+                padding: 20px;
+                background-color: #f9f9f9;
+                font-family: "Noto Sans JP", sans-serif;
+                overflow-x: hidden;
+            }
+            
+            .article-content {
+                background-color: white;
+                padding: 40px 60px;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+                text-align: center;
+            }
+
+            p {
+                font-size: 20px;
+                line-height: 1.8;
+                overflow-wrap: anywhere;
+                word-break: break-word;
+                text-align: left;
+                text-wrap: pretty;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+                margin: 20px 0;
+            }
+
+            h1 { font-size: 38px; text-align: center; line-height: 1.35; } 
+
+            a {
+                color: #1a5fb4;
+                word-break: break-all;
+            }
+
+            .link-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+                background-color: #fff;
+                border: 1px solid #eee;
+                border-radius: 12px;
+                padding: 15px;
+                margin: 40px auto;
+                max-width: 500px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+
+            .link-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            }
+
+            .link-card img {
+                width: 100%;
+                height: auto;
+                max-height: 300px;
+                object-fit: contain;
+                background-color: #f0f0f0;
+                border-radius: 8px;
+                margin: 0 0 15px 0;
+            }
+
+            .link-card-title {
+                font-size: 22px;
+                font-weight: bold;
+                margin: 5px 0;
+                color: #333;
+            }
+
+            .link-card-desc {
+                font-size: 16px;
+                color: #666;
+                margin: 5px 0;
+            }
+
+            /* スマホ・狭い画面 */
+            @media screen and (max-width: 640px) {
+                body {
+                    padding: 12px 10px;
+                }
+                .article-content {
+                    padding: 22px 16px 28px;
+                    border-radius: 8px;
+                }
+                h1 {
+                    font-size: clamp(1.35rem, 5.5vw, 1.75rem);
+                }
+                p {
+                    font-size: 17px;
+                    line-height: 1.85;
+                    text-align: left;
+                }
+                img {
+                    max-width: 100%;
+                    margin: 16px 0;
+                }
+                .link-card img {
+                    max-height: 180px;
+                }
+                .link-card-title {
+                    font-size: 18px;
+                }
+                .link-card-desc {
+                    font-size: 14px;
+                }
+                a {
+                    display: inline-block;
+                    padding: 6px 0;
+                    min-height: 44px;
+                    line-height: 1.5;
+                }
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="article-content">
+            <h1>VRAM8GBでStable Diffusion/Forge高速化！＆Stability Matrixを使った導入方法！(起動構成)</h1>
+            <p>どうもみなさんこんにちはnyakorです。今回はVRAM8GBでout of memoryにならずに早く高画質で画像生成する起動構成を紹介します。</p>
+            <p>VRAMが足りません...(<strong>out of memory</strong>)少ないVRAMを使っている人はほぼ必ず出会ったことのあるエラーだと思います。2026年現在　最新グラボはVRAM16GBとか24GBが当たり前ですが、僕のRTX 2070SUPER(VRAM8GB)でもあきらめるのはまだ早い!<strong>今回は僕がVRAM8GBでも戦える高画質＆爆速設定を公開します</strong>。(windwosのみ)</p>
+            <br>
+            <h2>Stability Matrixって何？</h2>
+            <p>AI画像生成(Stable Diffusion)を始めるとき、普通は<strong>GitだったりPythonとかの難しい設定</strong>が必要なんですが、Stability Matrixを使えば<strong>GitやPythonとかの設定を全部スキップ</strong>できる神ツールです。</p>
+            <p>Forge、Automatic1111、comfyUIなど、<strong>複数のAIツールを切り替えることができます。</strong></p>
+            <p>10GB以上あるモデルを<storong>ツールごとにコピーしなくて済む</storong>便利で簡単なツールです。</p>
+            <h2>1. StabilityMatrixの導入</h2>
+            <p>まず、本家のWebUI（Automatic1111）よりも動作が軽い<strong>Stable Diffusion Forge</strong>を使うのが鉄則です。これだけで、VRAMの管理が劇的に楽になります。</p>
+            <p>導入方法はまず公式のStability Matrix配布ページに移動します。https://github.com/LykosAI/StabilityMatrix そのあとに<strong>最新のzipファイルを</strong>ダウンロードしましょう。</p>
+            <img src="down.png">
+            <p>まず赤い円のところを押して..ダウンロードページに飛びます。</p>
+            <img src="ue.png">
+            <p>下のassetsを押して(押してあればそのまま)下のStabilityMatrix-win-x64を押してダウンロードしましょう。</p>
+            <img src="sita.png">
+            <p>そのあと<strong>解凍</strong>してインストーラーを実行します。好きなフォルダを選んでインストールしてください。そうしたらメニューから<strong>パッケージを押してStable Diffusion WebUI Forge - Neoを追加してください。</strong></p>
+            <img src="inst.png">
+            <p>インストールが終わったら<strong>Launch Options(起動オプション)</strong>を押して<strong>Launch Options(起動オプション)</strong>を押して設定を仕上げましょう。歯車マークを押してください。赤い四角がおすすめの設定です。</p>
+            <img src="setting.png">
+            <img src="1.png">
+            <p>ここにはなにも入れなくてOKです。</p>
+            <img src="2.png">
+            <p>1. Xformers これは、<strong>AIが画像を計算する方法を劇的に効率化してくれます。</strong>メリット： 画像の<strong>生成スピード</strong>が上がり、<strong>VRAMの使用率も下がります。</strong>画像生成するなら、オンにしといて損はないです</p>
+            <p>Pin Shared Memory VRAM 8GBには、高画質な絵を描くには少し足りません。メリット： この設定をオンにすると、VRAMが足りなくなった時に、<strong>PC本体のメモリを作業スペースとして使わせることができます。</strong>これによって、<strong>メモリ不足で画像生成が止まるのを防ぎ</strong>、粘り強く画像を完成させてくれます。</p>
+            <p>CUDA Malloc これはVRAMを効率よく使ってもらうようにグラボに指示してくれます。メリット： <storng>メモリを無駄遣いせず、効率よく使うように指示を出してくれます。</storng>なのでVRAM8GBでもエラーで生成が止まることがないんです。</p>
+            <img src="3.png">
+            <p>Skip Python Version Check これは<strong>Pythonのバージョンチェックをスキップする設定です。</strong>オンにすると<strong>起動が早くなりますが、</strong>画像生成には影響がなくオンにしてもしなくてもいい設定です。(オンにするとアップデートが来てることに気づかないかもしれません)</p>
+            <img src="4.png">
+            <p>一番下にある Extra Launch Arguments は、<strong>リストにない設定を書き込むことができる場所です。</strong>lowvram これはVRAMを節約してくれる設定です。メリット: これをオンにすると<strong>メモリ不足で停止することが減ります。</strong>画像生成が安定化します。デメリット: <strong>メモリを節約するので重い画像とかは速度がすごい落ちます。</strong>安定化ならオン、速さならオフのほうがいいです。</p>
+            <p>このまま起動したいところですが、<strong>モデルというAIの脳みそ</strong>がないとエラーで止まったりバグったりしてしまうので<strong>起動する前にダウンロードしておきましょう。</strong></p>
+            <img src="model.png">
+            <p>これを押してモデルが出てきたら自分好みのモデルをダウンロードしましょう。<strong>おすすめはPony Diffusion V6 XLです。</strong>結構重いモデルなのですが、<strong>このの記事で紹介した設定をやればメモリ不足でエラーはほぼなくなります。</strong></p>
+            <img src="modelall.png">
+            <p>そのあと画面右に青色のダウンロードが出るのでそれを押してください。</p>
+            <img src="insto.png">
+            <p>モデルをダウンロードする時、たまに<strong>ログインを求められることがあります。</strong>そういうときは<strong>Civitaiのアカウントを作っておくと、Stability Matrixと連携できて、ダウンロードがとてもスムーズになるのでおすすめです！ログインしてダウンロードしたらあとは待つだけです。</strong></p>
+            <p>ダウンロードや設定が済んだら青色のlaunchを押して起動しましょう。webが開いていれば起動成功です。</p>
+            <img src="launch.png">
+            <p>もしwebが開かなかったら<strong>上にwebを開く</strong>とあるのでそれを押してください。</p>
+            <img src="web.png">
+            <p>webを開くを押せばwebが開けて画像生成できるようになります。</p>
+            <p>ということでどうだったでしょうか？<strong>今回はStability Matrixの導入方法と起動オプションから画像生成を高速化する方法を紹介しました。</strong>webUI内の話は別の記事で紹介しますのでぜひそちらもご覧ください。ちなみに僕が使ってるグラボはRTX2070SUPERなんですが中古で二万くらいで買えました。</p>
+            <h2>もしAIのことなんでもできる最強環境がほしいなら...</h2>
+            <p><strong>RTX5090(VRAM32GB)を買えばマジで画像生成はなんでもできます。というか画像生成なんて余裕でなんでもできます。</strong></p>
+            <h2>AI画像生成の定番なら</h2>
+            <p><strong>RTX4060ti(16gb)かRTX5070(16gb)がおすすめです。</strong>RTX5090は70万しますが、RTX4060ti(16gb)かRTX5070(16gb)は<strong>15万くらいで買えます。</strong>こっちも全然画像生成は余裕です。</p>
+            <h2>安さ重視なら</h2>
+            <p><strong>安さ重視なら中古のグラボを狙うといいです。</strong>特にRTX3060(12gb)は<strong>3万くらいで買えます</strong>でもVRAM12GBあるので画像生成は行けると思います。</p>
+            <p>次はwebUI内で高速化だったり高画質化を紹介するのでぜひそちらもご覧ください。見てくれてありがとうございました。お役に立てたならよかったです。よい一日を！</p>
+
+            <a href="../5-blog/ai.html" class="link-card">
+                <img src="../5-blog/w.png">
+                <div class="link-card-title">【限界突破】RTX 2070 Superで挑むAI画像生成の話 VRAM8GBが重すぎた</div>
+                <p>VRAM 8GBのRTX 2070 SuperでStable Diffusion／Forgeを使ったAI画像生成の体験記です。負荷のかかる設定の罠、VRAMを節約するヒントなどを紹介します。</p>
+                </p>
+            </a>
+
+             <a href="../7-blog/ai-web.html" class="link-card">
+                <img src="../7-blog/w.png">
+                <div class="link-card-title">VRAM8GBのグラボでStable Diffusion/Forge高速化！　webUIでの高画質化＆高速化設定 - nyakorのブログ</div>
+                <p>webUI内で高速化＆高画質化する設定を8個紹介しています。VRAM８GBでも賢く画質を落とさずに高速化していきます。設定を変えると数秒早くなって効率が上がるのでチェックしてください！</p>
+                </p>
+            </a>
+
+            <br>
+            <a href="../index.html">ホームに戻る</a>
+        </div>
+
+    </body>
+</html>

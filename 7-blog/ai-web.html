@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VRAM8GBのグラボでStable Diffusion/Forge高速化！　webUIでの高画質化＆高速化設定 - nyakorのブログ</title>
+
+        <meta name="description" content="VRAM8GBのグラボでStable Diffusion/Forge高速化！　webUIでの高画質化＆高速化設定">
+        <meta property="og:type" content="article">
+        <meta property="og:site_name" content="nyakorのブログ">
+        <meta property="og:title" content="VRAM8GBのグラボでStable Diffusion/Forge高速化！　webUIでの高画質化＆高速化設定 - nyakorのブログ">
+        <meta property="og:description" content="VRAM8GBのグラボでStable Diffusion/Forge高速化！　webUIでの高画質化＆高速化設定">
+        <meta property="og:url" content="https://nyakor.github.io/web-base/7-blog/ai-web.html">
+        <meta property="og:image" content="https://nyakor.github.io/web-base/7-blog/web.png">
+        <meta property="og:locale" content="ja_JP">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="VRAM8GBのグラボでStable Diffusion/Forge高速化！　webUIでの高画質化＆高速化設定 - nyakorのブログ">
+        <meta name="twitter:description" content="VRAM8GBのグラボでStable Diffusion/Forge高速化！　webUIでの高画質化＆高速化設定">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+        
+        <style>
+            *, *::before, *::after { box-sizing: border-box; }
+            * { text-wrap: balance; }
+            html { -webkit-text-size-adjust: 100%; }
+
+            body {
+                text-align: center;
+                margin: 0 auto;
+                max-width: 1000px;
+                padding: 20px;
+                background-color: #f9f9f9;
+                font-family: "Noto Sans JP", sans-serif;
+                overflow-x: hidden;
+            }
+            
+            .article-content {
+                background-color: white;
+                padding: 40px 60px;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+                text-align: center;
+            }
+
+            p {
+                font-size: 20px;
+                line-height: 1.8;
+                overflow-wrap: anywhere;
+                word-break: break-word;
+                text-align: left;
+                text-wrap: pretty;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+                margin: 20px 0;
+            }
+
+            h1 { font-size: 38px; text-align: center; line-height: 1.35; } 
+
+            a {
+                color: #1a5fb4;
+                word-break: break-all;
+            }
+
+            .link-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+                background-color: #fff;
+                border: 1px solid #eee;
+                border-radius: 12px;
+                padding: 15px;
+                margin: 40px auto;
+                max-width: 500px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+
+            .link-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            }
+
+            .link-card img {
+                width: 100%;
+                height: auto;
+                max-height: 300px;
+                object-fit: contain;
+                background-color: #f0f0f0;
+                border-radius: 8px;
+                margin: 0 0 15px 0;
+            }
+
+            .link-card-title {
+                font-size: 22px;
+                font-weight: bold;
+                margin: 5px 0;
+                color: #333;
+            }
+
+            .link-card-desc {
+                font-size: 16px;
+                color: #666;
+                margin: 5px 0;
+            }
+
+            /* スマホ・狭い画面 */
+            @media screen and (max-width: 640px) {
+                body {
+                    padding: 12px 10px;
+                }
+                .article-content {
+                    padding: 22px 16px 28px;
+                    border-radius: 8px;
+                }
+                h1 {
+                    font-size: clamp(1.35rem, 5.5vw, 1.75rem);
+                }
+                p {
+                    font-size: 17px;
+                    line-height: 1.85;
+                    text-align: left;
+                }
+                img {
+                    max-width: 100%;
+                    margin: 16px 0;
+                }
+                .link-card img {
+                    max-height: 180px;
+                }
+                .link-card-title {
+                    font-size: 18px;
+                }
+                .link-card-desc {
+                    font-size: 14px;
+                }
+                a {
+                    display: inline-block;
+                    padding: 6px 0;
+                    min-height: 44px;
+                    line-height: 1.5;
+                }
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="article-content">
+            <h1>VRAM8GBでStable Diffusion/Forge高速化！ webUIでの高画質化＆高速化設定!</h1>
+            <p>どうもみなさんこんにちはこんばんはnyakorと申します。今回は前回の記事の続きで<strong>AI画像生成のStable Diffusion/Forge(webUI)</strong>の高速化設定プラス高画質化設定を紹介します。僕の場合は<strong>3秒も早くなった</strong>のでぜひ見ていってください！/p>
+            <h2>設定の変更</h2>
+            <p>これで画像を生成していきます。webUIです。今回はこれで設定を変えます。写真の赤いところを写真と同じにすれば今回の記事のおすすめ設定と同じ設定になります。(モデルによっても変わるのでご注意ください)使ってる<Strong>モデルはAnimagine XL V3.1</Strong>ってやつです。</p>
+            <img src="web.png">
+            <p>効果がある設定を<strong>8個紹介します。</strong>人によっては3秒くらい変わると思います。</p>
+            <p><strong>Batch sizeを1に固定:</strong> 一度に複数枚計算すると時間が超伸びてメモリエラーになる可能性があるので、この設定は<strong>強いグラボとかVRAMが多い人以外は使わないほうがいい</strong>です。</p>
+            <img src="01.png">
+            <p><strong>不要なプロンプトの削除:</strong> beautiful, high qualityなどの盛りすぎは計算を複雑にして<strong>時間がかかるので、必要なものだけ</strong>にしましょう。</p>
+            <p><strong>Stepsを20前後まで下げる:</strong> 30以上は時間が伸びるだけなので、20~25くらいが画質を落とさず早くする黄金比です。(モデルによっては上げないと綺麗にできません)</p>
+            <img src="02.png">
+            <p><strong>Sampling MethodをDPM++ 2Mにする:</strong> DPM++ 2Mは1回計算したら次はこれくらい計算すれば完成に近づく。と<strong>過去の計算から計算して予測するんです。</strong>だから、<strong>無駄な動きがなくて早く綺麗に作れます。</strong>しかも表情も指定分によく従ってくれるのでガチャ要素があまりないところもいいところです。</p>
+            <p><strong>Schedule TypeをKarrasにする:</strong> 画像生成の計算には、<Strong>最初は大胆に削り、後半は繊細に削るというスケジュールがあるんです。</Strong>AUTOMATICは最初から最後まで同じペースで計算しようとしてしまい遅くなりがちなのですが、<strong>Karrasは最初は特に大胆に計算してそれから超細かく計算する</strong>ので時間も短くなるし細かく綺麗になるんです。<strong>しかもステップが少なくても30~40ステップくらいの高クオリティ画像ができる</strong>んです。(モデルによる)</p>
+            <img src="03.png">
+            <p><strong>ベース解像度を高くしない:</strong> 最初から高いと時間がかかるのでやめましょう。<strong>おすすめは1216×832</strong>です。</p>
+            <img src="04.png">
+            <p><strong>Hires. fixはオフ:</strong> 高画質化(拡大は)パワーを使うので<strong>お気に入りの一枚が出来てからオンにしましょう。</strong></p>
+            <p><Strong>Token merging (ToMe)を0.3にする(おすすめはしません):</Strong> AIは普通、画面を細かいつぶつぶ（トークン）に分けて計算するのですが、白い背景を作るとき全体のつぶつぶを別々に計算するのは時間がかかりますよね？<strong>Token mergingは似ている計算をまとめて計算するので時間も短くなって20%ほど時短できるんです。</strong>ちなみにやらないほうがいいです。僕がやったら画質落ちました。0.3より下のほうがいいです。やり方はsettingsタブからoptimizationsを押してその中にあるスライダーを動かすだけです。やめたほうがいいです。</p>
+            <img src="05.png">
+            <img src="06.png">
+            <p>ちなみに僕が<strong>pony Diffusion V6 XLを使って</strong>Token merging (ToMe)を0.3にしたらこんな画像出来ましたｗｗｗ(設定が会わなかったみたいです)</p>
+            <img src="w.png">
+            <p>やるなら0.1のほうがいいです。でも速度上がってる感じはしませんでした...↓0.1</p>
+            <img src="q.png">
+            <p>ということでどうだったでしょうか？今回の記事はAI画像生成の速度あげるのと画質あげる設定を解説しました。<strong>AI関連の記事はページの一番下にリンク張っておくので見てみてください。</strong>見てくれてありがとうございました。よい一日を！</p>
+
+
+            
+            <a href="../5-blog/ai.html" class="link-card">
+                <img src="../5-blog/w.png">
+                <div class="link-card-title">【限界突破】RTX 2070 Superで挑むAI画像生成の話 VRAM8GBが重すぎた</div>
+                <p>VRAM 8GBのRTX 2070 SuperでStable Diffusion／Forgeを使ったAI画像生成の体験記です。負荷のかかる設定の罠、VRAMを節約するヒントなどを紹介します。</p>
+                </p>
+            </a>
+
+            <a href="../6-blog/ai-setings.html" class="link-card">
+                <img src="../6-blog/insto.png">
+                <div class="link-card-title">【限界突破】RTX 2070 Superで挑むAI画像生成の話 VRAM8GBが重すぎた</div>
+                <p></p>
+                </p>
+            </a>
+
+            <br>
+            <a href="../index.html">ホームに戻る</a>
+        </div>
+
+    </body>
+</html>

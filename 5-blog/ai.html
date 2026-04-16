@@ -5,17 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>RTX 2070 SuperでAI画像生成｜VRAM 8GBの限界と工夫のコツ - nyakorのブログ</title>
         <!-- 公開時: og:url と og:image のドメインを本番に合わせる -->
-        <meta name="description" content="VRAM 8GBのRTX 2070 SuperでStable Diffusion／Forgeを使ったAI画像生成の体験記。負荷のかかる設定の罠、VRAMを節約するヒント、目標の収益話など。">
+        <meta name="description" content="VRAM 8GBのRTX 2070 SuperでStable Diffusion／Forgeを使ったAI画像生成の体験記。負荷のかかる設定の罠、VRAMを節約するヒントなど">
         <meta property="og:type" content="article">
         <meta property="og:site_name" content="nyakorのブログ">
         <meta property="og:title" content="RTX 2070 SuperでAI画像生成｜VRAM 8GBの限界と工夫のコツ - nyakorのブログ">
-        <meta property="og:description" content="VRAM 8GBのRTX 2070 SuperでStable Diffusion／Forgeを使ったAI画像生成の体験記。負荷のかかる設定の罠、VRAMを節約するヒント、目標の収益話など。">
-        <meta property="og:url" content="https://example.com/5-blog/ai.html">
-        <meta property="og:image" content="https://example.com/og-image.png">
+        <meta property="og:description" content="VRAM 8GBのRTX 2070 SuperでStable Diffusion／Forgeを使ったAI画像生成の体験記。負荷のかかる設定の罠、VRAMを節約するヒントなど。">
+        <meta property="og:url" content="https://nyakor.github.io/web-base/5-blog/ai.html">
+        <meta property="og:image" content="https://nyakor.github.io/web-base/5-blog/reimu-copy.png">
         <meta property="og:locale" content="ja_JP">
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="RTX 2070 SuperでAI画像生成｜VRAM 8GBの限界と工夫のコツ - nyakorのブログ">
-        <meta name="twitter:description" content="VRAM 8GBのRTX 2070 SuperでStable Diffusion／Forgeを使ったAI画像生成の体験記。負荷のかかる設定の罠、VRAMを節約するヒント、目標の収益話など。">
+        <meta name="twitter:description" content="VRAM 8GBのRTX 2070 SuperでStable Diffusion／Forgeを使ったAI画像生成の体験記。負荷のかかる設定の罠、VRAMを節約するヒントなど。">
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
         
         <style>
@@ -151,19 +151,20 @@
 
         <div class="article-content">
             <h1>【限界突破】RTX 2070 Superで挑むAI画像生成の話 VRAM8GBが重すぎた</h1>
-            <p>どうも皆さんこんにちは！ ブログを書いたりゲームをしたりに明け暮れているnyakorです。ブログを書くのもそのレビュー対象のゲームを買うのにも<Strong>避けれない問題があります。それは資金不足です。</Strong>ゲームを一つ買うのにも今の貯金だと限界があります。なら自分のできることで稼ごうと思いました。なので<strong>手元のPCでAI画像生成（Stable Diffusion / Forge）</strong>を始めました。</p>
-            <p>しかし、僕のPCをグラフィックボードの<strong>NVIDIA GeForce RTX 2070 Super （VRAM 8GB）</strong>は、最新のグラボに比べればもはや「一世代前の戦士」です。この限られたリソースで、いかにして<strong>売れるクオリティ</strong>を生成して、月10円を生み出すか。ぜひ最後まで見てってください。</p>
+            <p>どうも皆さんこんにちは！ ブログを書いたりゲームをしたりに明け暮れているnyakorです。AI画像生成に興味があったので<strong>手元のPCでAI画像生成（Stable Diffusion / Forge）</strong>を始めました。</p>
+            <p>しかし、僕のPCをグラフィックボードの<strong>NVIDIA GeForce RTX 2070 Super （VRAM 8GB）</strong>は、最新のグラボに比べればもはや「一世代前の戦士」です。この限られたリソースで、いかにして<srong>高画質で効率的に</srong>作れるか紹介するので、ぜひ最後まで見てってください。</p>
             <br>
             <h2>第1の罠：「8K」という呪文とVRAMの爆死</h2>
-            <p>AI画像生成を始めたばかりの人は<strong>多分必ずかかる罠があります。</strong>それは<strong>8Kという名の罠</strong>です。最高の画質を求めて僕は8K high qualityと打って生成ボタンを<strong>押した瞬間PCに異変が起きました。</strong>なんと<strong>通常10秒ほどで終わる画像生成がなんと8K high qualityと打ったせいで10分に伸びました。</strong>しかもPCの音がまるでジェット機でした。タスクマネージャーを開くと驚きの光景が↓</p>
+            <p>AI画像生成を始めたばかりの人は<strong>多分必ずかかる罠があります。</strong>それは<strong>8Kという名の罠</strong>です。最高の画質を求めて僕は8K high qualityと打って生成ボタンを<strong>押した瞬間PCに異変が起きました。</strong>なんと<strong>通常10秒ほどで終わる画像生成がなんと8K high qualityと打ったせいで30秒に伸びました。</strong>しかもPCの音がまるでジェット機でした。タスクマネージャーを開くと驚きの光景が↓</p>
             <img src="high.png">
+            <p>(いつもこうだけど時間と温度は上がってた)</p>
             <p>教訓1: VRAM8GB以下勢にとって<strong>プロンプトでの8K指定はただの自爆コード</strong>である。<Strong>(プロンプトを読むのはAIなので8K指定で絶対重くなるわけではないです。)</Strong></p>
-            <h2>第2の関門： 妥協できない品質</h2>
+            <h2>第2の関門： 細部の崩壊</h2>
             <p>次に僕を悩ませたのは<strong>AIによる細部の崩壊</strong>です。例えばぱっと見ると綺麗な桜と川の画像です。</p>
             <img src="houkai.png">
-            <p>奥のところだったりが<strong>グチャってしてたり色が混ざってたり</strong>しますよね。ぱっと見綺麗だし売っちゃえと思うのは簡単なんですが質が悪いので売りませんでした。不完全な画像を出すのは自分のブランドを傷つけることになるからです。</p>
+            <p>奥のところだったりが<strong>グチャってしてたり色が混ざってたり</strong>しますよね。やっぱリアルな画像を作りたいので設定を調節したりしました。</p>
             <h2>成功の兆し: たくさん作ることによりマシな写真が出来た</h2>
-            <p>50枚の中からやっと納得のいく画像ができました。 東方projectの博麗霊夢さんです。</p>
+            <p>50枚の中からやっと納得のいく画像ができました。 東方projectの霊夢さんです。</p>
             <img src="reimu.png">
             <p>いつもどこを見て選んでるかというと<strong>絵の崩壊がないことと色が不自然じゃないこと、あとはより詳しく見てぼやけてるところがないか</strong>とかです。これをクリアできる絵って100枚に数枚なので見逃さないように見ていきます。</p>
             <h2>VRAM8GBで生き残るための方法</h2>
@@ -172,13 +173,27 @@
                 <br>
                 <strong>最初から高解像度だと効率が下がるし電気代も上がるので少ない解像度でやりましょう。</strong>
             </p>
-            <p>アップスケールはあと出しにする
+            <p>アップスケールはあとで実行する
                 <br>
                 <strong>生成と同時に高解像度化するHires. fixは重すぎます。生成後にExtrasタブで拡大する方が圧倒的にVRAMに優しくて軽いです。</strong>
             </p>
-            <h2>最初は月10円でも収入がほしい！</h2>
-            <p>僕の<Strong>最初の目標は、月に10円でも売れること</Strong>です。「たった10円？」と思うかもしれません。でも、最初は10円でも価値があると思います。</p>
-            <p>ということでどうだったでしょうか？博麗霊夢さんの絵綺麗だったですよね。皆さんが満足できる画像を作ろうと思っています。下にBOOTHのリンクを張っておくのでぜひ見てみてください。では見てくれてありがとうございました！よい一日にを！</p>
+            <h2>最初は設定の調節から！</h2>
+            <p>僕は最初は元の設定でやっていたのですが、設定を変えたら時間が30秒から15秒くらいまで減りました。時間が減ると効率も上がるので設定は調節しましょう。下におすすめの設定とかモデルとかを紹介する記事のリンクを張るので見てみてください。</p>
+            <p>ということでどうだったでしょうか？霊夢の絵綺麗だったですよね。VRAM8GBでも以外とできるみたいでよかったです！では見てくれてありがとうございました！よい一日にを！</p>
+
+            <a href="../6-blog/ai-setings.html" class="link-card">
+                <img src="../6-blog/insto.png">
+                <div class="link-card-title">【限界突破】RTX 2070 Superで挑むAI画像生成の話 VRAM8GBが重すぎた</div>
+                <p>VRAM 8GBのRTX 2070 SuperでStable Diffusion／Forgeを使ったAI画像生成の体験記です。負荷のかかる設定の罠、VRAMを節約するヒントなどを紹介します。</p>
+                </p>
+            </a>
+
+             <a href="../7-blog/ai-web.html" class="link-card">
+                <img src="../7-blog/w.png">
+                <div class="link-card-title">VRAM8GBのグラボでStable Diffusion/Forge高速化！　webUIでの高画質化＆高速化設定 - nyakorのブログ</div>
+                <p>webUI内で高速化＆高画質化する設定を8個紹介しています。VRAM８GBでも賢く画質を落とさずに高速化していきます。設定を変えると数秒早くなって効率が上がるのでチェックしてください！</p>
+                </p>
+            </a>
 
             <br>
             <a href="../index.html">ホームに戻る</a>
